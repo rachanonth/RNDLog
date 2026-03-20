@@ -9,10 +9,10 @@ export async function getNowPage(): Promise<NowPage | null> {
 /** Fetch the N most recent published posts */
 export async function getRecentPosts(
   limit = 3
-): Promise<Pick<Post, "id" | "title" | "slug" | "publishedAt">[]> {
+): Promise<Pick<Post, "id" | "title" | "slug" | "publishedAt" | "excerpt">[]> {
   return prisma.post.findMany({
     where: { published: true },
-    select: { id: true, title: true, slug: true, publishedAt: true },
+    select: { id: true, title: true, slug: true, publishedAt: true, excerpt: true },
     orderBy: { publishedAt: "desc" },
     take: limit,
   });
