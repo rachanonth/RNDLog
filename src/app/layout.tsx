@@ -54,6 +54,12 @@ export default function RootLayout({
                 >
                   Projects
                 </Link>
+                <Link
+                  href="/uses"
+                  className="text-sm font-sans text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
+                >
+                  Uses
+                </Link>
                 <ThemeToggle />
               </div>
             </header>

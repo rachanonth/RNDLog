@@ -18,7 +18,7 @@ function parseFields(formData: FormData) {
 export async function createTool(formData: FormData): Promise<void> {
   const data = parseFields(formData);
   const tool = await prisma.externalTool.create({ data });
-  revalidatePath("/projects");
+  revalidatePath("/uses");
   redirect(`/admin/tools/${tool.id}/edit`);
 }
 
@@ -26,12 +26,12 @@ export async function updateTool(formData: FormData): Promise<void> {
   const id = formData.get("id") as string;
   const data = parseFields(formData);
   await prisma.externalTool.update({ where: { id }, data });
-  revalidatePath("/projects");
+  revalidatePath("/uses");
 }
 
 export async function deleteTool(formData: FormData): Promise<void> {
   const id = formData.get("id") as string;
   await prisma.externalTool.delete({ where: { id } });
-  revalidatePath("/projects");
+  revalidatePath("/uses");
   redirect("/admin/tools");
 }
