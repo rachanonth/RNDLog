@@ -41,7 +41,7 @@ export default function RootLayout({
         <ThemeProvider>
           {/* TopNavBar */}
           <nav className="fixed top-0 w-full z-50 bg-[#faf9f6]/80 dark:bg-[#1a1c1a]/80 backdrop-blur-md border-b border-outline-variant/10">
-            <div className="flex justify-between items-center max-w-5xl mx-auto px-6 h-20">
+            <div className="flex justify-between items-center max-w-2xl mx-auto px-6 h-20">
               <Link href="/" className="text-xl font-bold tracking-tighter text-[#1c1917] dark:text-[#faf9f6] font-serif">
                 Rachanont
               </Link>
@@ -68,13 +68,13 @@ export default function RootLayout({
             </div>
           </nav>
 
-          <main className="pt-40 pb-24 px-6 max-w-5xl mx-auto flex-1 w-full">
+          <main className="pt-40 pb-24 px-6 max-w-2xl mx-auto flex-1 w-full">
             {children}
           </main>
 
           {/* Footer */}
           <footer className="w-full mt-auto py-12 bg-[#f4f3f0] dark:bg-[#141614] border-t border-outline-variant/10">
-            <div className="flex flex-col md:flex-row justify-between items-center max-w-5xl mx-auto px-6 gap-4">
+            <div className="flex flex-col md:flex-row justify-between items-center max-w-2xl mx-auto px-6 gap-4">
               <div className="font-sans text-xs uppercase tracking-widest opacity-70 text-[#1c1917] dark:text-[#faf9f6]">
                 © {new Date().getFullYear()} Rachanont
               </div>
