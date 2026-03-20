@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ExternalTool } from "@prisma/client";
 import Link from "next/link";
 import { getAllTools } from "@/lib/tools";
 import DeleteToolButton from "@/components/admin/DeleteToolButton";
@@ -6,7 +7,7 @@ import DeleteToolButton from "@/components/admin/DeleteToolButton";
 export const metadata: Metadata = { title: "Tools — Admin" };
 
 export default async function AdminToolsPage() {
-  const tools = await getAllTools();
+  const tools: ExternalTool[] = await getAllTools();
 
   return (
     <div>
