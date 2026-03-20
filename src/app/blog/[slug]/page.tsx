@@ -24,7 +24,7 @@ export async function generateMetadata({
   };
 }
 
-export const revalidate = 60;
+export const revalidate = false;
 
 export default async function BlogPostPage({
   params,

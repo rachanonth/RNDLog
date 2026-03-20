@@ -3,7 +3,7 @@ import { getAllProjects } from "@/lib/projects";
 
 export const metadata: Metadata = { title: "Projects" };
 
-export const revalidate = 60;
+export const revalidate = false;
 
 export default async function ProjectsPage() {
   const projects = await getAllProjects();

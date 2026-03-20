@@ -5,7 +5,7 @@ import { getNowPage, getRecentPosts } from "@/lib/posts";
 
 export const metadata: Metadata = { title: "Rachanont" };
 
-export const revalidate = 60;
+export const revalidate = false;
 
 export default async function HomePage() {
   const [now, recentPosts] = await Promise.all([
