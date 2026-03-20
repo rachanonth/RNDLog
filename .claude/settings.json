@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pkill -f \"next dev\")",
+      "Bash(npm uninstall:*)",
+      "Read(//private/tmp/**)",
+      "Bash(curl -s -o /dev/null -w \" %{http_code}\" http://localhost:3000/blog)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\(''''props'''',{}\\).get\\(''''pageProps'''',{}\\).get\\(''''err'''',{}\\).get\\(''''message'''',''''''''\\)[:500]\\)\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/admin)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/admin/login)",
+      "WebFetch(domain:www.rachanont.com)",
+      "Bash(npx ts-node:*)",
+      "Bash(curl -s http://localhost:3000/blog)",
+      "Bash(curl -s -o /dev/null -w %{http_code} http://localhost:3000/blog)",
+      "Bash(curl -s -o /dev/null -w \" %{http_code}\" http://localhost:3000/blog/soapnote)"
+    ],
+    "additionalDirectories": [
+      "/Users/kurapika/RNDLog/src/app/admin/posts/[id]",
+      "/Users/kurapika/RNDLog/src/app/admin/projects/[id]"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Singleton table — always query the single row (id = "singleton")
+model NowPage {
+  id          String   @id @default("singleton")
+  content     String   // Markdown bullet list
+  location    String
+  displayDate DateTime @default(now()) // manually-set display date
+  updatedAt   DateTime @updatedAt
+
+  @@map("now_page")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  url         String?
+  githubUrl   String?
+  stack       String?  // comma-separated tags
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("projects")
+}
+
+model Post {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String   // Markdown text stored as Text
+  excerpt     String?  // Short summary shown on listing page
+  published   Boolean  @default(false)
+  publishedAt DateTime @default(now()) // manually-editable display date
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("posts")
+}
