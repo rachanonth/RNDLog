@@ -36,6 +36,12 @@ export default function AdminNav() {
               Projects
             </Link>
             <Link
+              href="/admin/tools"
+              className="px-3 py-1.5 text-sm text-stone-400 hover:text-white hover:bg-stone-800 rounded transition-colors"
+            >
+              Tools
+            </Link>
+            <Link
               href="/admin/assets"
               className="px-3 py-1.5 text-sm text-stone-400 hover:text-white hover:bg-stone-800 rounded transition-colors"
             >

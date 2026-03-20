@@ -17,7 +17,8 @@
     ],
     "additionalDirectories": [
       "/Users/kurapika/RNDLog/src/app/admin/posts/[id]",
-      "/Users/kurapika/RNDLog/src/app/admin/projects/[id]"
+      "/Users/kurapika/RNDLog/src/app/admin/projects/[id]",
+      "/Users/kurapika/RNDLog/src/app/admin/tools/[id]"
     ]
   }
 }
