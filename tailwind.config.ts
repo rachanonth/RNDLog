@@ -59,9 +59,9 @@ const config: Config = {
         "on-tertiary-fixed-variant": "#3f484d"
       },
       fontFamily: {
-        headline: ["var(--font-space-grotesk)", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],
-        label: ["var(--font-space-grotesk)", "sans-serif"],
+        sans: ["var(--font-hen-special)", "Georgia", "serif"],
+        serif: ["var(--font-hen-special)", "Georgia", "serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "monospace"],
       },
       borderRadius: {
         DEFAULT: "0.125rem",

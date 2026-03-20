@@ -10,12 +10,12 @@ export default async function ProjectsPage() {
 
   return (
     <div>
-      <h1 className="font-headline text-3xl text-[#1a1c1a] dark:text-[#faf9f6] mb-10">
+      <h1 className="font-serif text-3xl text-[#1a1c1a] dark:text-[#faf9f6] mb-10">
         Projects
       </h1>
 
       {projects.length === 0 ? (
-        <p className="text-[#1a1c1a]/60 dark:text-[#faf9f6]/60 text-sm font-body">
+        <p className="text-[#1a1c1a]/60 dark:text-[#faf9f6]/60 text-sm font-sans">
           Nothing here yet.
         </p>
       ) : (
@@ -25,18 +25,18 @@ export default async function ProjectsPage() {
               <div className="flex items-start justify-between gap-6">
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h2 className="font-headline text-xl text-[#1a1c1a] dark:text-[#faf9f6]">
+                    <h2 className="font-serif text-xl text-[#1a1c1a] dark:text-[#faf9f6]">
                       {project.name}
                     </h2>
                     {project.featured && (
-                      <span className="text-xs font-headline tracking-widest uppercase text-[#1a1c1a]/60 dark:text-[#faf9f6]/60">
+                      <span className="text-xs font-serif tracking-widest uppercase text-[#1a1c1a]/60 dark:text-[#faf9f6]/60">
                         featured
                       </span>
                     )}
                   </div>
 
                   {project.description && (
-                    <p className="mt-2 text-sm text-[#1a1c1a]/80 dark:text-[#faf9f6]/80 leading-relaxed font-body">
+                    <p className="mt-2 text-sm text-[#1a1c1a]/80 dark:text-[#faf9f6]/80 leading-relaxed font-sans">
                       {project.description}
                     </p>
                   )}
@@ -46,7 +46,7 @@ export default async function ProjectsPage() {
                       {project.stack.split(",").map((tag) => (
                         <span
                           key={tag.trim()}
-                          className="px-2 py-0.5 text-xs font-tech bg-surface-container-high dark:bg-[#2a2d2a] text-[#1a1c1a]/80 dark:text-[#faf9f6]/80 rounded-sm"
+                          className="px-2 py-0.5 text-xs font-mono bg-surface-container-high dark:bg-[#2a2d2a] text-[#1a1c1a]/80 dark:text-[#faf9f6]/80 rounded-sm"
                         >
                           {tag.trim()}
                         </span>

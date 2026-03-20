@@ -1,28 +1,32 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import Link from "next/link";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["300", "400", "500", "600"],
+const henSpecial = localFont({
+  src: [
+    {
+      path: "../fonts/iannnnn-HENSpecial-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/iannnnn-HENSpecial-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-hen-special",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "The Archivist",
-    template: "%s — The Archivist",
+    default: "Rachanont",
+    template: "%s — Rachanont",
   },
-  description: "A digital archive.",
+  description: "A personal journal by Rachanont.",
   metadataBase: new URL("https://rachanont.com"),
 };
 
@@ -32,27 +36,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${henSpecial.variable}`} suppressHydrationWarning>
       <body className="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col transition-colors">
         <ThemeProvider>
           {/* TopNavBar */}
           <nav className="fixed top-0 w-full z-50 bg-[#faf9f6]/80 dark:bg-[#1a1c1a]/80 backdrop-blur-md border-b border-outline-variant/10">
             <div className="flex justify-between items-center max-w-5xl mx-auto px-6 h-20">
-              <Link href="/" className="text-xl font-bold tracking-tighter text-[#1c1917] dark:text-[#faf9f6] font-headline">
-                The Archivist
+              <Link href="/" className="text-xl font-bold tracking-tighter text-[#1c1917] dark:text-[#faf9f6] font-serif">
+                Rachanont
               </Link>
-              <div className="hidden md:flex items-center gap-8 font-headline font-medium text-sm tracking-tight">
+              <div className="hidden md:flex items-center gap-8 font-serif font-medium text-sm tracking-tight">
                 <Link
                   href="/projects"
                   className="text-[#1c1917]/60 dark:text-[#faf9f6]/60 hover:text-[#1c1917] dark:hover:text-[#faf9f6] transition-colors"
                 >
                   Projects
-                </Link>
-                <Link
-                  href="/about"
-                  className="text-[#1c1917]/60 dark:text-[#faf9f6]/60 hover:text-[#1c1917] dark:hover:text-[#faf9f6] transition-colors"
-                >
-                  About
                 </Link>
                 <Link
                   href="/blog"
@@ -77,25 +75,25 @@ export default function RootLayout({
           {/* Footer */}
           <footer className="w-full mt-auto py-12 bg-[#f4f3f0] dark:bg-[#141614] border-t border-outline-variant/10">
             <div className="flex flex-col md:flex-row justify-between items-center max-w-5xl mx-auto px-6 gap-4">
-              <div className="font-body text-xs uppercase tracking-widest opacity-70 text-[#1c1917] dark:text-[#faf9f6]">
-                © {new Date().getFullYear()} The Digital Archivist
+              <div className="font-sans text-xs uppercase tracking-widest opacity-70 text-[#1c1917] dark:text-[#faf9f6]">
+                © {new Date().getFullYear()} Rachanont
               </div>
               <div className="flex gap-8">
                 <a
                   href="https://github.com/rachanonth/"
-                  className="font-body text-xs uppercase tracking-widest opacity-60 hover:opacity-100 transition-opacity text-[#1c1917] dark:text-[#faf9f6]"
+                  className="font-sans text-xs uppercase tracking-widest opacity-60 hover:opacity-100 transition-opacity text-[#1c1917] dark:text-[#faf9f6]"
                 >
                   GitHub
                 </a>
                 <a
                   href="/rss"
-                  className="font-body text-xs uppercase tracking-widest opacity-60 hover:opacity-100 transition-opacity text-[#1c1917] dark:text-[#faf9f6]"
+                  className="font-sans text-xs uppercase tracking-widest opacity-60 hover:opacity-100 transition-opacity text-[#1c1917] dark:text-[#faf9f6]"
                 >
                   RSS
                 </a>
                 <a
                   href="/source"
-                  className="font-body text-xs uppercase tracking-widest opacity-60 hover:opacity-100 transition-opacity text-[#1c1917] dark:text-[#faf9f6]"
+                  className="font-sans text-xs uppercase tracking-widest opacity-60 hover:opacity-100 transition-opacity text-[#1c1917] dark:text-[#faf9f6]"
                 >
                   Source
                 </a>

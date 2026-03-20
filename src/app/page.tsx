@@ -3,7 +3,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { getNowPage, getRecentPosts } from "@/lib/posts";
 
-export const metadata: Metadata = { title: "The Archivist" };
+export const metadata: Metadata = { title: "Rachanont" };
 
 export const revalidate = false;
 
@@ -20,7 +20,7 @@ export default async function HomePage() {
         <section>
           <div className="flex items-center gap-3 mb-6">
             <span className="w-2 h-2 bg-primary rounded-full"></span>
-            <h2 className="text-sm uppercase tracking-widest font-bold font-headline text-on-surface-variant">
+            <h2 className="text-sm uppercase tracking-widest font-bold font-serif text-on-surface-variant">
               Now
             </h2>
           </div>
@@ -29,12 +29,12 @@ export default async function HomePage() {
               <ReactMarkdown
                 components={{
                   ul: ({ children }) => (
-                    <ul className="space-y-6 text-sm font-body leading-relaxed counter-reset-list list-none p-0">{children}</ul>
+                    <ul className="space-y-6 text-sm font-sans leading-relaxed counter-reset-list list-none p-0">{children}</ul>
                   ),
                   li: ({ children }) => {
                     return (
                       <li className="flex gap-3 relative" style={{ counterIncrement: "list" }}>
-                        <span className="text-primary dark:text-[#faf9f6] opacity-30 font-headline">
+                        <span className="text-primary dark:text-[#faf9f6] opacity-30 font-serif">
                           0<span className="before:content-[counter(list)]"></span>
                         </span>
                         <span>{children}</span>
@@ -50,25 +50,8 @@ export default async function HomePage() {
                 {now.content}
               </ReactMarkdown>
             ) : (
-              <p className="text-sm font-body text-on-surface-variant">Nothing here yet.</p>
+              <p className="text-sm font-sans text-on-surface-variant">Nothing here yet.</p>
             )}
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-sm uppercase tracking-widest font-bold font-headline text-on-surface-variant mb-6">
-            Status
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            <span className="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] uppercase font-bold tracking-tighter rounded-sm">
-              Available
-            </span>
-            <span className="px-3 py-1 bg-surface-container-high text-on-surface-variant text-[10px] uppercase font-bold tracking-tighter rounded-sm">
-              Remote
-            </span>
-            <span className="px-3 py-1 bg-surface-container-high text-on-surface-variant text-[10px] uppercase font-bold tracking-tighter rounded-sm">
-              GMT+7
-            </span>
           </div>
         </section>
       </aside>
@@ -76,10 +59,10 @@ export default async function HomePage() {
       {/* Main Stream: Recent Posts */}
       <section className="md:col-span-8">
         <div className="flex items-center justify-between mb-12">
-          <h2 className="text-2xl font-bold font-headline tracking-tight">Recent Archives</h2>
+          <h2 className="text-2xl font-bold font-serif tracking-tight">Recent Archives</h2>
           <Link
             href="/blog"
-            className="text-xs font-headline uppercase tracking-widest border-b border-primary dark:border-[#faf9f6] pb-1 hover:opacity-60 transition-opacity"
+            className="text-xs font-serif uppercase tracking-widest border-b border-primary dark:border-[#faf9f6] pb-1 hover:opacity-60 transition-opacity"
           >
             View All
           </Link>
@@ -87,13 +70,13 @@ export default async function HomePage() {
 
         <div className="space-y-16">
           {recentPosts.length === 0 ? (
-            <p className="text-sm font-body text-on-surface-variant">No posts yet.</p>
+            <p className="text-sm font-sans text-on-surface-variant">No posts yet.</p>
           ) : (
             recentPosts.map((post) => (
               <article key={post.id} className="group cursor-pointer">
                 <Link href={`/blog/${post.slug}`}>
                   <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-12">
-                    <time className="text-xs font-headline uppercase tracking-widest text-on-surface-variant pt-2 w-24 shrink-0">
+                    <time className="text-xs font-serif uppercase tracking-widest text-on-surface-variant pt-2 w-24 shrink-0">
                       {new Date(post.publishedAt).toLocaleDateString("en-US", {
                         year: "2-digit",
                         month: "short",
@@ -101,7 +84,7 @@ export default async function HomePage() {
                       }).replace(/,/g, ', ')}
                     </time>
                     <div className="flex-grow">
-                      <h3 className="text-2xl font-bold font-headline leading-tight group-hover:text-primary dark:group-hover:text-[#faf9f6] transition-colors mb-4">
+                      <h3 className="text-2xl font-bold font-serif leading-tight group-hover:text-primary dark:group-hover:text-[#faf9f6] transition-colors mb-4">
                         {post.title}
                       </h3>
                       {post.excerpt && (
@@ -110,8 +93,8 @@ export default async function HomePage() {
                         </p>
                       )}
                       <div className="flex gap-4">
-                        <span className="text-[10px] font-headline uppercase tracking-widest text-on-surface-variant/40">Philosophy</span>
-                        <span className="text-[10px] font-headline uppercase tracking-widest text-on-surface-variant/40">Design</span>
+                        <span className="text-[10px] font-serif uppercase tracking-widest text-on-surface-variant/40">Philosophy</span>
+                        <span className="text-[10px] font-serif uppercase tracking-widest text-on-surface-variant/40">Design</span>
                       </div>
                     </div>
                   </div>
