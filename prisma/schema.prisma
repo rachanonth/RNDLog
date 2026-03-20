@@ -50,6 +50,7 @@ model ExternalTool {
   link        String
   category    String?
   icon        String?  // emoji
+  visible     Boolean  @default(false)
   order       Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

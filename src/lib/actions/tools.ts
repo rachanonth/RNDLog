@@ -11,6 +11,7 @@ function parseFields(formData: FormData) {
     link: (formData.get("link") as string).trim(),
     category: ((formData.get("category") as string) ?? "").trim() || null,
     icon: ((formData.get("icon") as string) ?? "").trim() || null,
+    visible: formData.get("visible") === "on",
     order: parseInt((formData.get("order") as string) ?? "0", 10) || 0,
   };
 }

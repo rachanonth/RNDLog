@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import type { ExternalTool } from "@prisma/client";
 import Link from "next/link";
-import { getAllTools } from "@/lib/tools";
+import { getAllToolsAdmin } from "@/lib/tools";
 import DeleteToolButton from "@/components/admin/DeleteToolButton";
 
 export const metadata: Metadata = { title: "Tools — Admin" };
 
 export default async function AdminToolsPage() {
-  const tools: ExternalTool[] = await getAllTools();
+  const tools: ExternalTool[] = await getAllToolsAdmin();
 
   return (
     <div>
@@ -49,6 +49,11 @@ export default async function AdminToolsPage() {
                 )}
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
+                    <span
+                      className={`inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+                        tool.visible ? "bg-emerald-400" : "bg-stone-300"
+                      }`}
+                    />
                     <span className="text-sm font-medium text-stone-900 truncate">
                       {tool.name}
                     </span>

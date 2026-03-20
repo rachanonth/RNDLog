@@ -13,6 +13,7 @@ type Tool = {
   link: string;
   category: string | null;
   icon: string | null;
+  visible: boolean;
   order: number;
 };
 
@@ -89,6 +90,20 @@ export default function ToolEditor({ tool }: { tool?: Tool }) {
             className={inputCls}
           />
         </div>
+      </div>
+
+      {/* Visible */}
+      <div className="flex items-center gap-2">
+        <input
+          id="visible"
+          name="visible"
+          type="checkbox"
+          defaultChecked={tool?.visible ?? false}
+          className="h-4 w-4 rounded border-stone-300 text-stone-900"
+        />
+        <label htmlFor="visible" className="text-sm text-stone-700">
+          Visible on /uses page
+        </label>
       </div>
 
       {/* Order */}
