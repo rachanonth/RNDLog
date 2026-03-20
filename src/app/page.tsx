@@ -2,15 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { getNowPage, getRecentPosts } from "@/lib/posts";
+import { getFeaturedProjects } from "@/lib/projects";
+import { ProjectLinkIcons } from "@/components/ProjectLinks";
 
 export const metadata: Metadata = { title: "Rachanont" };
 
 export const revalidate = false;
 
 export default async function HomePage() {
-  const [now, recentPosts] = await Promise.all([
+  const [now, recentPosts, featuredProjects] = await Promise.all([
     getNowPage(),
     getRecentPosts(3),
+    getFeaturedProjects(),
   ]);
 
   return (
@@ -57,7 +60,6 @@ export default async function HomePage() {
                 {now.content}
               </ReactMarkdown>
             </div>
-
             <p className="mt-6 text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 font-sans">
               Updated{" "}
               {new Date(now.displayDate).toLocaleDateString("en-US", {
@@ -73,7 +75,6 @@ export default async function HomePage() {
         )}
       </section>
 
-      {/* ── Divider ── */}
       <hr className="border-stone-200 dark:border-stone-700" />
 
       {/* ── Recent Posts section ── */}
@@ -115,6 +116,50 @@ export default async function HomePage() {
           </Link>
         )}
       </section>
+
+      {/* ── Featured Projects section ── */}
+      {featuredProjects.length > 0 && (
+        <>
+          <hr className="border-stone-200 dark:border-stone-700" />
+
+          <section>
+            <h2 className="font-serif text-xl text-stone-900 dark:text-stone-100 mb-5">
+              Featured Projects
+            </h2>
+
+            <ul className="space-y-6">
+              {featuredProjects.map((project) => (
+                <li key={project.id} className="flex items-start justify-between gap-6">
+                  <div className="min-w-0">
+                    <p className="font-serif text-base text-stone-900 dark:text-stone-100">
+                      {project.name}
+                    </p>
+                    {project.description && (
+                      <p className="mt-1 text-sm text-stone-500 dark:text-stone-400 leading-relaxed font-sans">
+                        {project.description}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex-shrink-0 mt-0.5">
+                    <ProjectLinkIcons
+                      githubUrl={project.githubUrl}
+                      url={project.url}
+                      name={project.name}
+                    />
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <Link
+              href="/projects"
+              className="mt-6 inline-block text-xs tracking-widest uppercase text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors font-sans"
+            >
+              All projects →
+            </Link>
+          </section>
+        </>
+      )}
     </div>
   );
 }
